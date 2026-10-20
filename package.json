@@ -1,0 +1,7 @@
+{
+  "name": "mumbai-flights",
+  "version": "1.0.0",
+  "description": "Live flights around Mumbai dashboard",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
