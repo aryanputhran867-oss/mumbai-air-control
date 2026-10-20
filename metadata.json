@@ -1,0 +1,6 @@
+{
+  "name": "Mumbai Air Control · Live",
+  "description": "Live flight tracking and arrival delay prediction dashboard for Mumbai (CSMIA) and Navi Mumbai (NMIA) airports.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

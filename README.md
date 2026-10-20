@@ -1,18 +1,32 @@
-# Mumbai Air Control (BOM + NMI)
+# Mumbai Air Control · Live (BOM + NMI)
 
-Live flights, weather and delay prediction for Mumbai (BOM) and Navi Mumbai (NMI).
+A modern full-stack React and TypeScript application for real-time flight tracking, weather observation, runway analysis, and arrival delay predictions around Mumbai (CSMIA) and Navi Mumbai (NMIA) airports.
 
-## Run
-1. Install Node.js 18+
-2. In this folder: `node server.js`
-3. Open http://localhost:3000
+## Features
 
-No npm install, no API keys.
+- **Live Radar Map**: Interactive Leaflet-powered radar map with inverted high-contrast tiles, real-time aircraft dead-reckoning extrapolation, aircraft heading rotation, flight trails, and 4km airport perimeter zones.
+- **Dual Airport Monitoring**: Live meteorological conditions (Open-Meteo), METAR reports (aviationweather.gov), active flight category (VFR, MVFR, IFR, LIFR), intelligent runway selection, headwind/crosswind calculation, and 0–100 delay risk scoring.
+- **Delay Risk & Traffic Forecasts**: Hourly weather risk score projections and 15-minute arrival time distribution buckets for the upcoming 2 hours.
+- **Multi-Source Ingestion**: Aggregates live ADS-B data from Flightradar24, ADS-B community feeds (adsb.lol, airplanes.live, adsb.fi, adsb.one), and OpenSky Network, with flight route resolution via adsbdb.
+- **Flight Detail & Follow Mode**: Select any aircraft to lock view, track its live position, and view detailed metrics (route, altitude, ground speed, vertical speed, squawk, estimated arrival, and distance).
+- **Geolocation Integration**: Live device GPS lock showing your location on the radar with accuracy radius and dynamic distance from you to any aircraft.
+- **Landing Tracker & ML Delay Model**: Logs flight estimations and actual landing timestamps to `data/training.csv` to calculate prediction slip and track delay patterns.
 
-## What it does
-- Live map + table of all aircraft within 100 nm: air, ground, arriving, departing, ETA, route, live GPS, follow mode, trails
-- Per airport: live weather (Open-Meteo), METAR, flight category, likely runway + crosswind, delay-risk score (0-100)
-- Predictions: 8-hour weather risk forecast, arrivals expected in the next 2 hours, estimated delay per flight
-- Risk model: weighted rules on visibility, gusts, crosswind, rain, thunderstorms + live traffic congestion (not a trained ML model; history is saved to data/history.json for later training)
+## Tech Stack
 
-Options: `RADIUS_NM=150 node server.js`
+- **Frontend**: React 19, TypeScript, Vite, Leaflet
+- **Backend**: Express, TypeScript, Vite middleware (`server.ts`)
+- **Data Stores**: File-backed history (`data/history.json`) and landing logs (`data/training.csv`)
+
+## Running the App
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
